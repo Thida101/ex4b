@@ -6,21 +6,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+
   <style>
-	.carousel {
-	  width:600px;
-	  height:320px;
-	}
-	
-	body{
-		margin: 20px;
-	}
+    .carousel {
+      width:600px;
+      height:320px;
+    }
+    body{
+      margin: 20px;
+    }
   </style>
 </head>
 <body>
-<!-- Page Content -->
+
 <h2>Top Tourist Attractions in Thailand</h2>
+
 <div id="imageSlider" class="carousel slide" data-bs-ride="carousel">
+  
   <div class="carousel-indicators">
     <button type="button" data-bs-target="#imageSlider" data-bs-slide-to="0" class="active"></button>
     <button type="button" data-bs-target="#imageSlider" data-bs-slide-to="1"></button>
@@ -31,29 +33,31 @@
   </div>
 
   <div class="carousel-inner">
+
     <div class="carousel-item active">
-      <img src="images/PhiPhiIslands.jpg" class="d-block w-100">
+      <img src="images/PhiPhiIslands.jpg" class="d-block w-100 slide-img">
     </div>
 
     <div class="carousel-item">
-      <img src="images/Sukhothai.jpg" class="d-block w-100">
+      <img src="images/Sukhothai.jpg" class="d-block w-100 slide-img">
     </div>
 
     <div class="carousel-item">
-      <img src="images/PhangNga.jpg" class="d-block w-100">
+      <img src="images/PhangNga.jpg" class="d-block w-100 slide-img">
     </div>
 
     <div class="carousel-item">
-      <img src="images/HuaHin.jpg" class="d-block w-100">
+      <img src="images/Ayutthaya.jpg" class="d-block w-100 slide-img">
     </div>
 
     <div class="carousel-item">
-      <img src="images/Ayutthaya.jpg" class="d-block w-100">
+      <img src="images/HuaHin.jpg" class="d-block w-100 slide-img">
     </div>
 
     <div class="carousel-item">
-      <img src="images/FloatingMarket.jpg" class="d-block w-100">
+      <img src="images/FloatingMarket.jpg" class="d-block w-100 slide-img">
     </div>
+
   </div>
 
   <button class="carousel-control-prev" type="button" data-bs-target="#imageSlider" data-bs-slide="prev">
@@ -64,5 +68,34 @@
     <span class="carousel-control-next-icon"></span>
   </button>
 </div>
+<script src="content.js"></script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  var images = document.querySelectorAll(".slide-img");
+
+  images.forEach(function(img, index) {
+    img.setAttribute("data-bs-toggle", "tooltip");
+    img.setAttribute("data-bs-placement", "top");
+    img.setAttribute(
+      "title",
+      content[index].name + " : " + content[index].desc
+    );
+  });
+
+  var tooltipTriggerList = [].slice.call(
+    document.querySelectorAll('[data-bs-toggle="tooltip"]')
+  );
+
+  tooltipTriggerList.map(function (tooltipTriggerEl) {
+    return new bootstrap.Tooltip(tooltipTriggerEl);
+  });
+
+});
+</script>
+
 </body>
 </html>
+
+
